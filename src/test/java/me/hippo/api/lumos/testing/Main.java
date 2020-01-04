@@ -23,6 +23,8 @@ import org.junit.Test;
 
 import java.util.Random;
 
+import static me.hippo.api.lumos.builder.CommandBuilder.*;
+
 /**
  * @author Hippo
  * @version 1.1.0, 07/25/2019

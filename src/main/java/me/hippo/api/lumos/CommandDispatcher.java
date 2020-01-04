@@ -70,10 +70,15 @@ public final class CommandDispatcher {
         if (scanner.hasNext()) {
             String argument = scanner.next().trim();
 
-
+            boolean next = false;
             do {
                 if(argument.isEmpty()) {
                     argument = scanner.next();
+                }
+
+                if(next) {
+                    argument = argument.concat(" ").concat(scanner.next()).trim();
+                    next = false;
                 }
 
                 String argumentName = argument;
@@ -91,7 +96,7 @@ public final class CommandDispatcher {
                     commandNode = child;
                     argument = "";
                 }else {
-                    argument = argument.concat(" ").concat(scanner.next()).trim();
+                    next = true;
                 }
             }while (scanner.hasNext());
         }

@@ -68,9 +68,15 @@ public final class CommandContext {
         if(scanner.hasNext()) {
             String argument = scanner.next().trim();
 
+            boolean next = false;
+
             do {
                 if(argument.isEmpty()) {
                     argument = scanner.next().trim();
+                }
+                if(next) {
+                    argument = argument.concat(" ").concat(scanner.next()).trim();
+                    next = false;
                 }
                 boolean shouldParse = true;
                 boolean isDefinite = false;
@@ -107,7 +113,7 @@ public final class CommandContext {
                     commandNode = commandNode.getChild(argument);
                     argument = "";
                 } else {
-                    argument = argument.concat(" ").concat(scanner.next()).trim();
+                    next = true;
                 }
             }while (scanner.hasNext());
         }
