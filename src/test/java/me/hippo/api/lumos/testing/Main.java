@@ -81,7 +81,7 @@ public final class Main {
 
 
 
-            for (String suggestion : CommandDispatcher.getSuggestions("hack man i")) {
+            for (String suggestion : CommandDispatcher.getSuggestions("hack tool i")) {
                 System.out.println(suggestion); //prints "ip"
             }
         }catch (CommandException e) {
