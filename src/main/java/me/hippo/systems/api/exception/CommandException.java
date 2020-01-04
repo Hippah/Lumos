@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos.exception;
+package me.hippo.systems.api.exception;
 
 /**
  * @author Hippo
- * @version 1.1.0, 07/25/2019
- * @since 1.0.0
+ * @version 1.1.0, 1/4/20
+ * @since 1.1.0
  */
-public final class CommandSyntaxException extends CommandException {
+public class CommandException extends Exception {
 
-    public CommandSyntaxException(String message) {
+    public CommandException(String message) {
         super(message);
     }
 }

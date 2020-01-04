@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos.context;
+package me.hippo.systems.api.context;
 
 
-import me.hippo.systems.lumos.CommandDispatcher;
-import me.hippo.systems.lumos.argument.ArgumentType;
-import me.hippo.systems.lumos.argument.impl.BooleanArgumentType;
-import me.hippo.systems.lumos.argument.impl.NumberArgumentType;
-import me.hippo.systems.lumos.argument.impl.StringArgumentType;
-import me.hippo.systems.lumos.exception.CommandNotFoundException;
-import me.hippo.systems.lumos.node.CommandNode;
-import me.hippo.systems.lumos.node.argument.ArgumentCommandNode;
-import me.hippo.systems.lumos.node.label.LabelCommandNode;
-import me.hippo.systems.lumos.util.TypeUtil;
+import me.hippo.systems.api.CommandDispatcher;
+import me.hippo.systems.api.argument.ArgumentType;
+import me.hippo.systems.api.argument.impl.NumberArgumentType;
+import me.hippo.systems.api.argument.impl.BooleanArgumentType;
+import me.hippo.systems.api.argument.impl.StringArgumentType;
+import me.hippo.systems.api.exception.CommandNotFoundException;
+import me.hippo.systems.api.node.CommandNode;
+import me.hippo.systems.api.node.argument.ArgumentCommandNode;
+import me.hippo.systems.api.node.label.LabelCommandNode;
+import me.hippo.systems.api.util.TypeUtil;
 
 import java.util.Map;
 import java.util.NoSuchElementException;

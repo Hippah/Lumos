@@ -14,15 +14,21 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos.exception;
+package me.hippo.systems.api;
+
+import me.hippo.systems.api.context.CommandContext;
 
 /**
  * @author Hippo
- * @version 1.1.0, 1/4/20
- * @since 1.1.0
+ * @version 1.0.0, 07/25/2019
+ * @since 1.0.0
  */
-public final class CommandNotFoundException extends CommandException {
-    public CommandNotFoundException(String message) {
-        super(message);
-    }
+@FunctionalInterface
+public interface Command {
+    /**
+     * Executes the command.
+     *
+     * @param commandContext  The context of the command.
+     */
+    void execute(CommandContext commandContext);
 }

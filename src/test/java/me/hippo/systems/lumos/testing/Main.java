@@ -16,15 +16,12 @@
 
 package me.hippo.systems.lumos.testing;
 
-import me.hippo.systems.lumos.CommandDispatcher;
-import static me.hippo.systems.lumos.builder.CommandBuilder.*;
+import me.hippo.systems.api.CommandDispatcher;
 
-import me.hippo.systems.lumos.exception.CommandException;
-import me.hippo.systems.lumos.exception.CommandSyntaxException;
+import me.hippo.systems.api.exception.CommandException;
 import org.junit.Test;
 
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * @author Hippo

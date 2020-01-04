@@ -14,40 +14,16 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos.node.label;
-
-import me.hippo.systems.lumos.node.CommandNode;
+package me.hippo.systems.api.exception;
 
 /**
  * @author Hippo
- * @version 1.0.0, 07/25/2019
+ * @version 1.1.0, 07/25/2019
  * @since 1.0.0
  */
-public final class LabelCommandNode extends CommandNode {
+public final class CommandSyntaxException extends CommandException {
 
-    /**
-     * The label.
-     */
-    private final String label;
-
-    /**
-     * Creates a new {@link LabelCommandNode} with the desired label.
-     *
-     * @param label  The label.
-     */
-    public LabelCommandNode(String label) {
-        this.label = label;
+    public CommandSyntaxException(String message) {
+        super(message);
     }
-
-
-    /**
-     * Gets the label.
-     *
-     * @return The label.
-     */
-    @Override
-    public String getName() {
-        return label;
-    }
-
 }

@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos.exception;
+package me.hippo.systems.api.exception;
 
 /**
  * @author Hippo
  * @version 1.1.0, 1/4/20
  * @since 1.1.0
  */
-public class CommandException extends Exception {
-
-    public CommandException(String message) {
+public final class CommandNotFoundException extends CommandException {
+    public CommandNotFoundException(String message) {
         super(message);
     }
 }

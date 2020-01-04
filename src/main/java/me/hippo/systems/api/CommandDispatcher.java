@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos;
+package me.hippo.systems.api;
 
-import me.hippo.systems.lumos.builder.CommandBuilder;
-import me.hippo.systems.lumos.context.ArgumentValueWrapper;
-import me.hippo.systems.lumos.context.CommandContext;
-import me.hippo.systems.lumos.exception.CommandException;
-import me.hippo.systems.lumos.exception.CommandSyntaxException;
-import me.hippo.systems.lumos.node.CommandNode;
+import me.hippo.systems.api.builder.CommandBuilder;
+import me.hippo.systems.api.exception.CommandSyntaxException;
+import me.hippo.systems.api.context.ArgumentValueWrapper;
+import me.hippo.systems.api.context.CommandContext;
+import me.hippo.systems.api.exception.CommandException;
+import me.hippo.systems.api.node.CommandNode;
 
 import java.util.*;
 

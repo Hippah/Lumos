@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos.context;
+package me.hippo.systems.api.context;
 
 /**
  * @author Hippo

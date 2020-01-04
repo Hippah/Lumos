@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos.node.argument;
+package me.hippo.systems.api.node.argument;
 
-import me.hippo.systems.lumos.argument.ArgumentType;
-import me.hippo.systems.lumos.node.CommandNode;
+import me.hippo.systems.api.argument.ArgumentType;
+import me.hippo.systems.api.node.CommandNode;
 
 /**
  * @author Hippo

@@ -14,21 +14,13 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos;
+package me.hippo.systems.api.argument.impl;
 
-import me.hippo.systems.lumos.context.CommandContext;
+import me.hippo.systems.api.argument.ArgumentType;
 
 /**
  * @author Hippo
  * @version 1.0.0, 07/25/2019
  * @since 1.0.0
  */
-@FunctionalInterface
-public interface Command {
-    /**
-     * Executes the command.
-     *
-     * @param commandContext  The context of the command.
-     */
-    void execute(CommandContext commandContext);
-}
+public final class BooleanArgumentType implements ArgumentType {}

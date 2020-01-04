@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos.node;
+package me.hippo.systems.api.node;
 
-import me.hippo.systems.lumos.Command;
+import me.hippo.systems.api.Command;
 
 import java.util.Collection;
 import java.util.HashMap;

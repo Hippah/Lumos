@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos.util;
+package me.hippo.systems.api.util;
 
 /**
  * @author Hippo
- * @version 1.0.0, 07/25/2019
+ * @version 1.1.0, 07/25/2019
  * @since 1.1.0
  */
 public enum TypeUtil {

@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos.argument;
+package me.hippo.systems.api.argument.impl;
+
+import me.hippo.systems.api.argument.ArgumentType;
 
 /**
  * @author Hippo
  * @version 1.0.0, 07/25/2019
  * @since 1.0.0
  */
-public interface ArgumentType {}
+public final class StringArgumentType implements ArgumentType {}

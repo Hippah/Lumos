@@ -14,13 +14,40 @@
  * limitations under the License.
  */
 
-package me.hippo.systems.lumos.argument.impl;
+package me.hippo.systems.api.node.label;
 
-import me.hippo.systems.lumos.argument.ArgumentType;
+import me.hippo.systems.api.node.CommandNode;
 
 /**
  * @author Hippo
  * @version 1.0.0, 07/25/2019
  * @since 1.0.0
  */
-public final class BooleanArgumentType implements ArgumentType {}
+public final class LabelCommandNode extends CommandNode {
+
+    /**
+     * The label.
+     */
+    private final String label;
+
+    /**
+     * Creates a new {@link LabelCommandNode} with the desired label.
+     *
+     * @param label  The label.
+     */
+    public LabelCommandNode(String label) {
+        this.label = label;
+    }
+
+
+    /**
+     * Gets the label.
+     *
+     * @return The label.
+     */
+    @Override
+    public String getName() {
+        return label;
+    }
+
+}
