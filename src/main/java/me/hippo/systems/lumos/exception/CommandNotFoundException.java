@@ -14,5 +14,15 @@
  * limitations under the License.
  */
 
-rootProject.name = 'Lumos'
+package me.hippo.systems.lumos.exception;
 
+/**
+ * @author Hippo
+ * @version 1.1.0, 1/4/20
+ * @since 1.1.0
+ */
+public final class CommandNotFoundException extends CommandException {
+    public CommandNotFoundException(String message) {
+        super(message);
+    }
+}

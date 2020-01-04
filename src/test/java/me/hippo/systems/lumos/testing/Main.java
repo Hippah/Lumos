@@ -19,15 +19,17 @@ package me.hippo.systems.lumos.testing;
 import me.hippo.systems.lumos.CommandDispatcher;
 import static me.hippo.systems.lumos.builder.CommandBuilder.*;
 
+import me.hippo.systems.lumos.exception.CommandException;
 import me.hippo.systems.lumos.exception.CommandSyntaxException;
 import org.junit.Test;
 
 import java.util.Random;
-import java.util.concurrent.ExecutionException;
+import java.util.Scanner;
 
 /**
  * @author Hippo
- * @since 07/25/2019
+ * @version 1.1.0, 07/25/2019
+ * @since 1.0.0
  */
 public final class Main {
 
@@ -37,7 +39,7 @@ public final class Main {
         try {
 
             CommandDispatcher.register(
-                    label("hack")
+                    label("hack tool")
                     .then(
                             argument("user", string())
                             .executes(commandContext -> System.out.println("Hacked " + commandContext.getString("user")))
@@ -66,22 +68,24 @@ public final class Main {
                     )
                     .executes(commandContext -> {
                         System.out.println("Usage: ");
-                        System.out.println("> Hack <user>");
-                        System.out.println("> Hack ip <ping | proxy> <ip>");
-                        System.out.println("> Hack gc");
+                        System.out.println("> Hack tool <user>");
+                        System.out.println("> Hack tool ip <ping | proxy> <ip>");
+                        System.out.println("> Hack tool gc");
                     })
             );
 
-            CommandDispatcher.execute("hack");
-            CommandDispatcher.execute("hack Asyc");
-            CommandDispatcher.execute("hack ip ping hippo.com");
-            CommandDispatcher.execute("hack ip proxy hippo.com");
-            CommandDispatcher.execute("hack gc");
+            CommandDispatcher.execute("hack tool");
+            CommandDispatcher.execute("hack tool Asyc");
+            CommandDispatcher.execute("hack tool ip ping hippo.com");
+            CommandDispatcher.execute("hack tool ip proxy hippo.com");
+            CommandDispatcher.execute("hack tool gc");
 
-            for (String suggestion : CommandDispatcher.getSuggestions("hack i")) {
+
+
+            for (String suggestion : CommandDispatcher.getSuggestions("hack man i")) {
                 System.out.println(suggestion); //prints "ip"
             }
-        }catch (CommandSyntaxException e) {
+        }catch (CommandException e) {
             e.printStackTrace();
         }
 

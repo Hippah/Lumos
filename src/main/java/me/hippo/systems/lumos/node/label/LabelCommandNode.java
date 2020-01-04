@@ -20,7 +20,8 @@ import me.hippo.systems.lumos.node.CommandNode;
 
 /**
  * @author Hippo
- * @since 07/25/2019
+ * @version 1.0.0, 07/25/2019
+ * @since 1.0.0
  */
 public final class LabelCommandNode extends CommandNode {
 

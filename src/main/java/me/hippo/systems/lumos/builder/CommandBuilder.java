@@ -27,7 +27,8 @@ import me.hippo.systems.lumos.node.label.LabelCommandNode;
 
 /**
  * @author Hippo
- * @since 07/25/2019
+ * @version 1.0.0, 07/25/2019
+ * @since 1.0.0
  */
 public final class CommandBuilder {
 

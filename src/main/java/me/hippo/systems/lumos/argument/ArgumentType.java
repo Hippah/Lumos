@@ -18,6 +18,7 @@ package me.hippo.systems.lumos.argument;
 
 /**
  * @author Hippo
- * @since 07/25/2019
+ * @version 1.0.0, 07/25/2019
+ * @since 1.0.0
  */
 public interface ArgumentType {}

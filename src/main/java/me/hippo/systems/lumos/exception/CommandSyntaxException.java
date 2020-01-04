@@ -18,9 +18,10 @@ package me.hippo.systems.lumos.exception;
 
 /**
  * @author Hippo
- * @since 07/25/2019
+ * @version 1.1.0, 07/25/2019
+ * @since 1.0.0
  */
-public final class CommandSyntaxException extends Exception {
+public final class CommandSyntaxException extends CommandException {
 
     public CommandSyntaxException(String message) {
         super(message);

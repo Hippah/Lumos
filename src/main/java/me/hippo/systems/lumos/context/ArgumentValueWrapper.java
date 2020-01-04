@@ -18,7 +18,8 @@ package me.hippo.systems.lumos.context;
 
 /**
  * @author Hippo
- * @since 07/26/2019
+ * @version 1.0.0, 07/26/2019
+ * @since 1.0.0
  */
 public final class ArgumentValueWrapper {
 

@@ -14,5 +14,16 @@
  * limitations under the License.
  */
 
-rootProject.name = 'Lumos'
+package me.hippo.systems.lumos.exception;
 
+/**
+ * @author Hippo
+ * @version 1.1.0, 1/4/20
+ * @since 1.1.0
+ */
+public class CommandException extends Exception {
+
+    public CommandException(String message) {
+        super(message);
+    }
+}

@@ -19,6 +19,7 @@ package me.hippo.systems.lumos;
 import me.hippo.systems.lumos.builder.CommandBuilder;
 import me.hippo.systems.lumos.context.ArgumentValueWrapper;
 import me.hippo.systems.lumos.context.CommandContext;
+import me.hippo.systems.lumos.exception.CommandException;
 import me.hippo.systems.lumos.exception.CommandSyntaxException;
 import me.hippo.systems.lumos.node.CommandNode;
 
@@ -26,7 +27,8 @@ import java.util.*;
 
 /**
  * @author Hippo
- * @since 07/25/2019
+ * @version 1.1.0, 07/25/2019
+ * @since 1.0.0
  */
 public final class CommandDispatcher {
 
@@ -54,35 +56,101 @@ public final class CommandDispatcher {
      * @param input  The command input.
      * @throws CommandSyntaxException  If the command usage is invalid, or if the command doesn't even exist.
      */
-    public static void execute(String input) throws CommandSyntaxException {
-        String[] args = input.split(" ");
+    public static void execute(String input) throws CommandException {
         CommandContext commandContext = new CommandContext(input);
-        CommandNode commandNode = COMMAND_NODES.get(args[0]);
-        if(commandNode == null) {
-            throw new CommandSyntaxException("Unknown command.");
-        }
-        for (int i = 1; i < args.length; i++) {
-            String arg = args[i];
-            String argName = arg;
-            for (String key : commandContext.getArguments().keySet()) {
-                ArgumentValueWrapper value = commandContext.getArguments().get(key);
+        Scanner scanner = new Scanner(input);
+        String commandName = scanner.next();
 
-                if(value.getValueString().equalsIgnoreCase(arg)) {
-                    argName = key;
-                }
-            }
-            CommandNode child = commandNode.getChild(argName);
-            if(child != null) {
-                commandNode = child;
-            }else {
-                throw new CommandSyntaxException("Invalid command usage.");
-            }
+        while (COMMAND_NODES.get(commandName) == null) {
+            commandName = commandName.concat(" ").concat(scanner.next());
         }
+
+        CommandNode commandNode = COMMAND_NODES.get(commandName);
+
+        if (scanner.hasNext()) {
+            String argument = scanner.next().trim();
+
+
+            do {
+                if(argument.isEmpty()) {
+                    argument = scanner.next();
+                }
+
+                String argumentName = argument;
+                for (String key : commandContext.getArguments().keySet()) {
+                    ArgumentValueWrapper argumentValueWrapper = commandContext.getArguments().get(key);
+
+                    if(argumentValueWrapper.getValueString().equalsIgnoreCase(argument)) {
+                        argumentName = key;
+                    }
+                }
+
+                CommandNode child = commandNode.getChild(argumentName);
+
+                if(child != null) {
+                    commandNode = child;
+                    argument = "";
+                }else {
+                    argument = argument.concat(" ").concat(scanner.next()).trim();
+                }
+            }while (scanner.hasNext());
+        }
+
+        if(commandNode.getCommand() == null) {
+            throw new CommandSyntaxException("Invalid command usage of " + input);
+        }
+
         commandNode.getCommand().execute(commandContext);
     }
 
     public static List<String> getSuggestions(String input) {
-        String[] args = input.split(" ");
+        List<String> suggestions = new ArrayList<>();
+        Scanner scanner = new Scanner(input);
+        String commandName = scanner.next();
+
+        CommandNode commandNode = COMMAND_NODES.get(commandName);
+
+
+        while (commandNode == null && scanner.hasNext()) {
+            commandName = commandName.concat(" ").concat(scanner.next()).trim();
+            commandNode = COMMAND_NODES.get(commandName);
+        }
+
+        if(commandNode == null) {
+            for (String key : COMMAND_NODES.keySet()) {
+                if(key.startsWith(commandName)) {
+                    suggestions.add(key);
+                }
+            }
+            return suggestions;
+        }
+        if(scanner.hasNext()) {
+            String argument = scanner.next();
+            do {
+                if (argument.isEmpty()) {
+                    argument = scanner.next();
+                }
+                CommandNode child = commandNode.getChild(argument);
+                if (child == null) {
+                    if (!scanner.hasNext()) {
+                        for (CommandNode commandNodeChild : commandNode.getChildren()) {
+                            if (commandNodeChild.getName().toLowerCase().startsWith(argument.toLowerCase())) {
+                                suggestions.add(commandNodeChild.getName());
+                            }
+                        }
+                        return suggestions;
+                    } else {
+                        argument = argument.concat(" ").concat(scanner.next()).trim();
+                    }
+                } else {
+                    commandNode = child;
+                    argument = "";
+                }
+            } while (scanner.hasNext());
+        }
+
+        return suggestions;
+       /* String[] args = input.split(" ");
         CommandNode commandNode = COMMAND_NODES.get(args[0]);
         List<String> suggestions = new ArrayList<>();
         if(commandNode == null) {
@@ -106,7 +174,7 @@ public final class CommandDispatcher {
                 commandNode = child;
             }
         }
-        return suggestions;
+        return suggestions;*/
     }
 
     /**
