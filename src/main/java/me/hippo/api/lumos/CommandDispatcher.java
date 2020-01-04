@@ -131,9 +131,14 @@ public final class CommandDispatcher {
         }
         if(scanner.hasNext()) {
             String argument = scanner.next();
+            boolean next = false;
             do {
                 if (argument.isEmpty()) {
                     argument = scanner.next();
+                }
+                if(next) {
+                    argument = argument.concat(" ").concat(scanner.next()).trim();
+                    next = false;
                 }
                 CommandNode child = commandNode.getChild(argument);
                 if (child == null) {
@@ -145,7 +150,7 @@ public final class CommandDispatcher {
                         }
                         return suggestions;
                     } else {
-                        argument = argument.concat(" ").concat(scanner.next()).trim();
+                        next = true;
                     }
                 } else {
                     commandNode = child;
@@ -155,31 +160,6 @@ public final class CommandDispatcher {
         }
 
         return suggestions;
-       /* String[] args = input.split(" ");
-        CommandNode commandNode = COMMAND_NODES.get(args[0]);
-        List<String> suggestions = new ArrayList<>();
-        if(commandNode == null) {
-            for (String key : COMMAND_NODES.keySet()) {
-                if(key.startsWith(args[0])) {
-                    suggestions.add(key);
-                }
-            }
-            return suggestions;
-        }
-        for(int i = 1; i < args.length; i++) {
-            String arg = args[i];
-            CommandNode child = commandNode.getChild(arg);
-            if(child == null) {
-                for (CommandNode commandNodeChild : commandNode.getChildren()) {
-                    if(commandNodeChild.getName().startsWith(arg)) {
-                        suggestions.add(commandNodeChild.getName());
-                    }
-                }
-            }else {
-                commandNode = child;
-            }
-        }
-        return suggestions;*/
     }
 
     /**
